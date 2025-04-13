@@ -1,13 +1,15 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Progress } from "@/components/ui/progress"
-import { CheckCircle, Play } from "lucide-react"
+import { useState } from "react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { CheckCircle, Play } from "lucide-react";
+import { QuizModal } from "@/components/quiz-modal";
 
 export default function TrainingPage() {
-  const [activeVideo, setActiveVideo] = useState(0)
+  const [activeVideo, setActiveVideo] = useState(0);
+  const [showQuizModal, setShowQuizModal] = useState(false);
 
   return (
     <div className="px-4 md:px-8 py-4 space-y-6">
@@ -16,7 +18,9 @@ export default function TrainingPage() {
         <div className="relative h-32 md:h-40">
           <div className="absolute inset-0 banner-gradient z-10 flex flex-col justify-center p-8">
             <h1 className="text-3xl font-bold mb-2">TRAINING CENTER</h1>
-            <p className="text-gray-300">"Personalized training to help you level up in your career."</p>
+            <p className="text-gray-300">
+              "Personalized training to help you level up in your career."
+            </p>
           </div>
           <Image
             src="/placeholder.svg?height=160&width=800"
@@ -41,7 +45,9 @@ export default function TrainingPage() {
               </svg>
             </div>
             <div>
-              <div className="text-gray-400 text-sm uppercase font-bold">STATS</div>
+              <div className="text-gray-400 text-sm uppercase font-bold">
+                STATS
+              </div>
               <div className="text-lg font-bold">Overall</div>
             </div>
           </div>
@@ -59,7 +65,11 @@ export default function TrainingPage() {
                 <span className="text-sm">rapport building</span>
                 <span className="text-xs text-gray-400">Lv3 65%</span>
               </div>
-              <Progress value={65} className="h-1.5 bg-orange-900/30" indicatorClassName="bg-orange-500" />
+              <Progress
+                value={65}
+                className="h-1.5 bg-orange-900/30"
+                indicatorClassName="bg-orange-500"
+              />
             </div>
           </div>
 
@@ -69,14 +79,22 @@ export default function TrainingPage() {
                 <span className="text-sm">Call Opening Script</span>
                 <span className="text-xs text-gray-400">Lv3 25%</span>
               </div>
-              <Progress value={25} className="h-1.5 bg-yellow-900/30" indicatorClassName="bg-yellow-500" />
+              <Progress
+                value={25}
+                className="h-1.5 bg-yellow-900/30"
+                indicatorClassName="bg-yellow-500"
+              />
             </div>
             <div>
               <div className="flex justify-between mb-1">
                 <span className="text-sm">In progress</span>
                 <span className="text-xs text-gray-400">Lv3 65%</span>
               </div>
-              <Progress value={65} className="h-1.5 bg-purple-900/30" indicatorClassName="bg-purple-500" />
+              <Progress
+                value={65}
+                className="h-1.5 bg-purple-900/30"
+                indicatorClassName="bg-purple-500"
+              />
             </div>
           </div>
         </div>
@@ -99,8 +117,9 @@ export default function TrainingPage() {
               <div>
                 <h2 className="text-xl font-bold">Mental Training</h2>
                 <p className="text-sm text-gray-400">
-                  Strengthen your focus, decision-making, and resilience with interactive games and challenges designed
-                  to sharpen your mental agility.
+                  Strengthen your focus, decision-making, and resilience with
+                  interactive games and challenges designed to sharpen your
+                  mental agility.
                 </p>
               </div>
               <div className="ml-auto flex flex-col items-center">
@@ -125,15 +144,32 @@ export default function TrainingPage() {
                       strokeDasharray="4, 100"
                       strokeLinecap="round"
                     />
-                    <text x="18" y="21" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">
+                    <text
+                      x="18"
+                      y="21"
+                      textAnchor="middle"
+                      fontSize="8"
+                      fill="white"
+                      fontWeight="bold"
+                    >
                       1/25
                     </text>
                   </svg>
                 </div>
-                <span className="text-xs text-lime mt-1">Challenges Completed</span>
+                <span className="text-xs text-lime mt-1">
+                  Challenges Completed
+                </span>
               </div>
             </div>
-            <Button className="lime-button w-full">Start Training</Button>
+            <Button
+              className="lime-button w-full"
+              onClick={() => setShowQuizModal(true)}
+            >
+              Start Training
+            </Button>
+            {showQuizModal && (
+              <QuizModal onClose={() => setShowQuizModal(false)}  />
+            )}
           </div>
 
           {/* Objection Handling */}
@@ -150,8 +186,9 @@ export default function TrainingPage() {
               <div>
                 <h2 className="text-xl font-bold">Objection Handling</h2>
                 <p className="text-sm text-gray-400">
-                  Master customer objections with interactive scenarios and expert techniques. Improve your confidence
-                  in closing deals effectively.
+                  Master customer objections with interactive scenarios and
+                  expert techniques. Improve your confidence in closing deals
+                  effectively.
                 </p>
               </div>
               <div className="ml-auto flex flex-col items-center">
@@ -176,12 +213,21 @@ export default function TrainingPage() {
                       strokeDasharray="0, 100"
                       strokeLinecap="round"
                     />
-                    <text x="18" y="21" textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">
+                    <text
+                      x="18"
+                      y="21"
+                      textAnchor="middle"
+                      fontSize="8"
+                      fill="white"
+                      fontWeight="bold"
+                    >
                       0/4
                     </text>
                   </svg>
                 </div>
-                <span className="text-xs text-lime mt-1">Scenarios Completed</span>
+                <span className="text-xs text-lime mt-1">
+                  Scenarios Completed
+                </span>
               </div>
             </div>
             <Button className="lime-button w-full">Start Practice</Button>
@@ -260,8 +306,9 @@ export default function TrainingPage() {
               <div>
                 <h2 className="text-xl font-bold">Inspirational Videos</h2>
                 <p className="text-xs text-gray-400">
-                  Fuel your motivation with stories from top performers and thought leaders. Learn strategies to
-                  overcome challenges and stay inspired.
+                  Fuel your motivation with stories from top performers and
+                  thought leaders. Learn strategies to overcome challenges and
+                  stay inspired.
                 </p>
               </div>
               <div className="text-sm">17/32 Videos Watched</div>
@@ -281,13 +328,19 @@ export default function TrainingPage() {
                 </div>
               </div>
               <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black to-transparent">
-                <div className="text-2xl font-bold">Believe. Hustle. Inspire.</div>
-                <div className="text-sm text-gray-300">| Sales Motivation |</div>
+                <div className="text-2xl font-bold">
+                  Believe. Hustle. Inspire.
+                </div>
+                <div className="text-sm text-gray-300">
+                  | Sales Motivation |
+                </div>
               </div>
             </div>
 
             <div className="p-4 flex justify-between items-center">
-              <Button className="bg-blue-600 hover:bg-blue-700">Watch Now</Button>
+              <Button className="bg-blue-600 hover:bg-blue-700">
+                Watch Now
+              </Button>
               <Button variant="outline">PLAYLIST</Button>
             </div>
 
@@ -302,7 +355,11 @@ export default function TrainingPage() {
                 ].map((title, index) => (
                   <div
                     key={index}
-                    className={`flex items-center p-2 rounded-md ${activeVideo === index ? "bg-gray-800" : "hover:bg-gray-800/50"} cursor-pointer transition-colors`}
+                    className={`flex items-center p-2 rounded-md ${
+                      activeVideo === index
+                        ? "bg-gray-800"
+                        : "hover:bg-gray-800/50"
+                    } cursor-pointer transition-colors`}
                     onClick={() => setActiveVideo(index)}
                   >
                     <div className="w-6 text-center mr-2">{index + 1}</div>
@@ -310,7 +367,11 @@ export default function TrainingPage() {
                     {index === 0 || index === 4 ? (
                       <CheckCircle className="text-lime h-5 w-5" />
                     ) : (
-                      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5 text-blue-400">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        className="h-5 w-5 text-blue-400"
+                      >
                         <path
                           d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z"
                           fill="currentColor"
@@ -325,6 +386,5 @@ export default function TrainingPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-

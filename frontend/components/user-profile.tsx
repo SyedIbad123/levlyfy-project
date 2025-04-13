@@ -1,7 +1,5 @@
 "use client"
-
 import type React from "react"
-
 import { useState } from "react"
 import Image from "next/image"
 import { Switch } from "@/components/ui/switch"
@@ -13,7 +11,7 @@ export default function UserProfile() {
   const [isDarkMode, setIsDarkMode] = useState(true)
 
   return (
-    <div className="bg-black/90 rounded-lg p-6 max-w-md w-full mx-auto">
+    <div className="bg-black/30 rounded-lg p-6 max-w-md w-full mx-auto">
       {/* Header Section */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
@@ -141,7 +139,7 @@ interface StatHexagonProps {
   icon: React.ReactNode
 }
 
-function StatHexagon({ title, value, color, icon }: StatHexagonProps) {
+export function StatHexagon({ title, value, color, icon }: StatHexagonProps) {
   const colorClasses = {
     gold: "bg-yellow-500/20 text-yellow-500",
     orange: "bg-orange-500/20 text-orange-500",
